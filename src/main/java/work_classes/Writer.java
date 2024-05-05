@@ -18,18 +18,15 @@ public class Writer {
             for (Map.Entry<String, List<?>> entry : allResults.entrySet()) {
                 String header = entry.getKey();
                 List<?> values = entry.getValue();
-                if (header != "cov"){
+                if (header != "Ковариация"){
                 writeListToSheet(sheet, header, rowNum++, values);}
             }
 
-            for (int i = 0; i < allResults.size(); i++) {
-                sheet.autoSizeColumn(i);
-            }
 
-            Sheet covarianceSheet = workbook.createSheet("Ковариация");
+            Sheet covarianceSheet = workbook.createSheet("cov");
             writeCovarianceMatrix(covarianceSheet, (List<List<Double>>) allResults.get("Ковариация"), labels);
 
-            // Сохраняем документ
+            // сохранение документа
             try (FileOutputStream fileOut = new FileOutputStream(filename + ".xlsx")) {
                 workbook.write(fileOut);
             }
@@ -43,7 +40,7 @@ public class Writer {
         Row row = sheet.createRow(rowNum);
         CellStyle style = sheet.getWorkbook().createCellStyle();
         Font font = sheet.getWorkbook().createFont();
-        font.setBold(true);
+//        font.setBold(true);
         style.setFont(font);
         row.createCell(0).setCellValue(header);
         row.getCell(0).setCellStyle(style);

@@ -18,7 +18,7 @@ public class Reader {
         XSSFWorkbook myExcelBook = new XSSFWorkbook(new FileInputStream(file));
         XSSFSheet myExcelSheet = myExcelBook.getSheet(name);
         if (myExcelSheet == null) {
-            throw new IllegalArgumentException("Лист с таким названием не найден в книге Excel.");
+            throw new IllegalArgumentException("Лист с таким названием не найден");
         }
         int lastRowNum = myExcelSheet.getLastRowNum();
         Map<String, List<Double>> result = new HashMap<>();

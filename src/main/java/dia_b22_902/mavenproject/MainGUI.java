@@ -14,20 +14,32 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
 
-public class MainFrame {
+public class MainGUI {
     private static File selectedFile;
 
     public static void showFrame() throws IOException {
         JFrame frame = new JFrame();
-        JLabel label = new JLabel("Имя листа:");
+        JLabel label = new JLabel("Лист:");
+        label.setForeground(Color.WHITE);
+        
         JComboBox sheetNames = new JComboBox<>();
-        sheetNames.setPreferredSize(new Dimension(200, 25));
+        sheetNames.setForeground(Color.WHITE);
+        sheetNames.setBackground(Color.DARK_GRAY);
+        sheetNames.setOpaque(true);
+        sheetNames.setPreferredSize(new Dimension(190, 25));
+        
         JButton chooseButton = new JButton("Выбрать файл");
+        
         JComboBox chooseSampleComboBox = new JComboBox<>();
+        
         JButton readButton = new JButton("Cчитать выбранный лист");
-        JButton calculateButton = new JButton("Произвести статистические расчёты");
+        
+        JButton calculateButton = new JButton("Произвести расчёты");
+        
         JButton exportButton = new JButton("Экспортировать результаты");
-        JButton exitButton = new JButton("Выйти");
+        
+        JButton exitButton = new JButton("Закрыть");
+        
         Master_Calculate calculator = new Master_Calculate();
 
         chooseButton.addActionListener(new ActionListener() {
@@ -61,7 +73,7 @@ public class MainFrame {
                         throw new IllegalArgumentException("Файл не выбран.");
                     }
                     calculator.read(selectedFile.getAbsolutePath(), name);
-                    JOptionPane.showMessageDialog(frame, "Вариант считан", "Статус", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "Лист считан", "Статус", JOptionPane.INFORMATION_MESSAGE);
                 } catch (IOException | IllegalArgumentException ex) {
                     JOptionPane.showMessageDialog(frame, ex.getMessage(), "Ошибка", JOptionPane.ERROR_MESSAGE);
                 }
@@ -73,7 +85,7 @@ public class MainFrame {
             public void actionPerformed(ActionEvent e) {
                 calculator.calculateAll();
                 calculator.getAllResults();
-                JOptionPane.showMessageDialog(frame, "Расчёты готовы", "Статус", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(frame, "Расчёты произведены", "Статус", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -81,7 +93,7 @@ public class MainFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     calculator.write();
-                    JOptionPane.showMessageDialog(frame, "Файл OutputStatistics.xlsx экспортирован", "Статус", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "Файл calculated_statistics.xlsx экспортирован", "Статус", JOptionPane.INFORMATION_MESSAGE);
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(frame, ex.getMessage(), "Ошибка", JOptionPane.ERROR_MESSAGE);
                 }
@@ -94,7 +106,7 @@ public class MainFrame {
 
         exitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                int option = JOptionPane.showConfirmDialog(frame, "Вы уверены, что хотите выйти?", "Подтверждение выхода", JOptionPane.YES_NO_OPTION);
+                int option = JOptionPane.showConfirmDialog(frame, "Подтвердить выход?", "Подтверждение выхода", JOptionPane.YES_NO_OPTION);
                 if (option == JOptionPane.YES_OPTION) {
                     System.exit(0);
                 }
@@ -102,6 +114,8 @@ public class MainFrame {
         });
 
         JPanel panel = new JPanel();
+        panel.setBackground(Color.DARK_GRAY);
+        panel.setOpaque(true);
         panel.add(label);
         panel.add(sheetNames);
         panel.add(chooseButton);
@@ -111,7 +125,8 @@ public class MainFrame {
         panel.add(exitButton);
 
         frame.add(panel);
-        frame.setSize(400, 200);
+        frame.setTitle("Statistic calculator");
+        frame.setSize(420, 150);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

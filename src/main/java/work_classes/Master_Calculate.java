@@ -1,8 +1,7 @@
 package work_classes;
 
 import statistic_classes.*;
-//import read.Reader;
-//import write.Writer;
+
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,15 +17,15 @@ public class Master_Calculate {
     private  List<String>labels;
 
     public Master_Calculate() {
-        statObjects.put("Стандартное отклонение", new StandardDeviationTask3());
-        statObjects.put("Доверительный интервал для мат ожидания", new ConfidenceIntervalTask8());
+        statObjects.put("Оценка стандартного отклонения", new StandardDeviationTask3());
+        statObjects.put("Доверительный интервал для мат. ожидания", new ConfidenceIntervalTask8());
         statObjects.put("Количество элементов", new QuantityElemTask6());
-        statObjects.put("Среднее значение", new MeanTask2());
+        statObjects.put("Среднее арефметическое", new MeanTask2());
         statObjects.put("Максимальное значение", new MaximumTask10());
         statObjects.put("Минимальное значение", new MinimumTask10());
         statObjects.put("Среднее геометрическое", new GeometricMeanTask1());
         statObjects.put("Коэффициент вариации", new CoefficientVariationTask7());
-        statObjects.put("Дисперсия", new VarianceTask9());
+        statObjects.put("Оценка дисперсии", new VarianceTask9());
         statObjects.put("Размах", new RangeTask4());
         statObjects.put("Ковариация", new CovariationTask5());
     }
@@ -60,7 +59,7 @@ public class Master_Calculate {
     }
 
     public void write() throws IOException{
-            Writer.write(allResults, labels, "OutputStatistics");
+            Writer.write(allResults, labels, "calculated_statistics");
 
 
 

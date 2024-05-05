@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String args[]) throws IOException {
-        MainFrame mainFrame = new MainFrame();
+        MainGUI mainFrame = new MainGUI();
         mainFrame.showFrame();
 }}
 
