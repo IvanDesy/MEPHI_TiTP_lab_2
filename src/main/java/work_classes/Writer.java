@@ -55,12 +55,12 @@ public class Writer {
                 cell.setCellValue((Integer) value);
             }
         }
-        // Устанавливаем стиль для остальных ячеек в строке
-        CellStyle centerAlignStyle = sheet.getWorkbook().createCellStyle();
-        centerAlignStyle.setAlignment(HorizontalAlignment.CENTER);
-        for (int i = 1; i <= values.size(); i++) {
-            row.getCell(i).setCellStyle(centerAlignStyle);
-        }
+//        // Устанавливаем стиль для остальных ячеек в строке
+//        CellStyle centerAlignStyle = sheet.getWorkbook().createCellStyle();
+//        centerAlignStyle.setAlignment(HorizontalAlignment.CENTER);
+//        for (int i = 1; i <= values.size(); i++) {
+//            row.getCell(i).setCellStyle(centerAlignStyle);
+//        }
     }
 
     private static void writeCovarianceMatrix(Sheet sheet, List<List<Double>> covarianceMatrix, List<String> labels) {

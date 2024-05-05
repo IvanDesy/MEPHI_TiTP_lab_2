@@ -21,25 +21,17 @@ public class MainGUI {
         JFrame frame = new JFrame();
         JLabel label = new JLabel("Лист:");
         label.setForeground(Color.WHITE);
-        
         JComboBox sheetNames = new JComboBox<>();
         sheetNames.setForeground(Color.WHITE);
         sheetNames.setBackground(Color.DARK_GRAY);
         sheetNames.setOpaque(true);
         sheetNames.setPreferredSize(new Dimension(190, 25));
-        
         JButton chooseButton = new JButton("Выбрать файл");
-        
         JComboBox chooseSampleComboBox = new JComboBox<>();
-        
         JButton readButton = new JButton("Cчитать выбранный лист");
-        
         JButton calculateButton = new JButton("Произвести расчёты");
-        
         JButton exportButton = new JButton("Экспортировать результаты");
-        
-        JButton exitButton = new JButton("Закрыть");
-        
+        JButton exitButton = new JButton("Закрыть"); 
         Master_Calculate calculator = new Master_Calculate();
 
         chooseButton.addActionListener(new ActionListener() {
@@ -65,6 +57,7 @@ public class MainGUI {
                 }
             }
         });
+        
         readButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String name = (String) sheetNames.getSelectedItem();
@@ -101,8 +94,6 @@ public class MainGUI {
             }
 
         });
-
-
 
         exitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

@@ -14,7 +14,7 @@ public class Master_Calculate {
     private Map<String, statysticsInterface> statObjects = new HashMap<>();
     private Map<String, List<?>> allResults = new HashMap<>();
     private List<List<Double>> columns;
-    private  List<String>labels;
+    private List<String>labels;
 
     public Master_Calculate() {
         statObjects.put("Оценка стандартного отклонения", new StandardDeviationTask3());
@@ -53,14 +53,10 @@ public class Master_Calculate {
     }
 
 
-
     public Map<String, List<?>> getAllResults() {
         return allResults;
     }
 
     public void write() throws IOException{
             Writer.write(allResults, labels, "calculated_statistics");
-
-
-
 }}
